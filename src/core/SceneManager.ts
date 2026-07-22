@@ -34,6 +34,10 @@ class SceneManager {
     this.currentScene?.resize();
   };
 
+  public static getApp(): PIXIApplication {
+    return this.app;
+  };
+
 };
 
 export default SceneManager;
