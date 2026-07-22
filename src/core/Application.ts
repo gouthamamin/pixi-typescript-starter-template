@@ -21,11 +21,19 @@ class Application {
     document.getElementById("pixi-container")!.appendChild(this.app.canvas);
 
     SceneManager.initialize(this.app);
+    this.setupResizeHandler();
     await SceneManager.changeScene(new Boot());
   };
 
   public getApp(): PIXIApplication {
     return this.app;
+  };
+
+
+  private setupResizeHandler(): void {
+    window.addEventListener("resize",()=>{
+      SceneManager.resize();
+    });
   };
 
 };
