@@ -1,6 +1,7 @@
 import { Text } from "pixi.js";
 import Button from "../components/Button";
 import SceneManager from "../core/SceneManager";
+import ResizeManager from "../managers/ResizeManager";
 import BaseScene from "./BaseScene";
 import Game from "./Game";
 
@@ -20,10 +21,9 @@ class MainMenu extends BaseScene {
     title.anchor.set(0.5);
 
     title.position.set(
-      SceneManager.getApp().screen.width / 2,
-      SceneManager.getApp().screen.height / 2.5
+      ResizeManager.width / 2,
+      ResizeManager.height / 2.5
     );
-
     this.addChild(title);
 
     const playButton = new Button({
@@ -34,8 +34,8 @@ class MainMenu extends BaseScene {
     });
 
     playButton.position.set(
-      SceneManager.getApp().screen.width / 2,
-      SceneManager.getApp().screen.height / 1.5
+      ResizeManager.width / 2,
+      ResizeManager.height / 1.5
     );
     this.addChild(playButton);
 

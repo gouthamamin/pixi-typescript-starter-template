@@ -1,6 +1,6 @@
 import { Text } from "pixi.js";
 import BaseScene from "./BaseScene";
-import SceneManager from "../core/SceneManager";
+import ResizeManager from "../managers/ResizeManager";
 
 class Game extends BaseScene {
 
@@ -18,8 +18,8 @@ class Game extends BaseScene {
     title.anchor.set(0.5);
 
     title.position.set(
-      SceneManager.getApp().screen.width / 2,
-      SceneManager.getApp().screen.height / 2.5
+      ResizeManager.width / 2,
+      ResizeManager.height / 2
     );
 
     this.addChild(title)
