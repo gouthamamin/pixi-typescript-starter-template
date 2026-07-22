@@ -1,5 +1,6 @@
 import { Application as PIXIApplication } from "pixi.js";
 import { GAME_CONFIG } from "../constants/Config";
+import SceneManager from "./SceneManager";
 
 class Application {
   private app!: PIXIApplication;
@@ -17,6 +18,8 @@ class Application {
 
     // Append the application canvas to the document body
     document.getElementById("pixi-container")!.appendChild(this.app.canvas);
+
+    SceneManager.initialize(this.app);
   };
 
   public getApp(): PIXIApplication {
