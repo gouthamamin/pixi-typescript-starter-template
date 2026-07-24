@@ -2,8 +2,7 @@ import gsap from "gsap";
 import BaseScene from "../scenes/BaseScene";
 
 export class SceneTransition {
-
-  public static async fadeIn(scene: BaseScene, duration: number = 0.25): Promise<void> {
+  public static async fadeIn(scene: BaseScene, duration: number = 0.5): Promise<void> {
     scene.alpha = 0;
 
     await gsap.to(scene, {
@@ -12,7 +11,7 @@ export class SceneTransition {
     });
   };
 
-  public static async fadeOut(scene: BaseScene, duration: number = 0.25): Promise<void> {
+  public static async fadeOut(scene: BaseScene, duration: number = 0.5): Promise<void> {
     if (scene.alpha === 0) return;
 
     await gsap.to(scene, {
