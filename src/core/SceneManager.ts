@@ -4,10 +4,13 @@ import { SceneTransition } from "../helpers/SceneTransition";
 
 class SceneManager {
   private static app: PIXIApplication;
-  private static currentScene: BaseScene | null;
+  private static currentScene: BaseScene | null = null;
 
   public static initialize(app: PIXIApplication): void {
     this.app = app;
+    this.app.ticker.add((ticker) => {
+      this.currentScene?.update(ticker.deltaTime);
+    });
     console.log("scene manager intialized");
   };
 
