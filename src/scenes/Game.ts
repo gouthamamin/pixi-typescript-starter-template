@@ -3,6 +3,7 @@ import BaseScene from "./BaseScene";
 import ResizeManager from "../managers/ResizeManager";
 
 class Game extends BaseScene {
+  private title!: Text;
 
   public initialize(): void | Promise<void> {
     console.log("Game scene inti");
@@ -15,14 +16,20 @@ class Game extends BaseScene {
       }
     });
 
-    title.anchor.set(0.5);
+    this.title = title;
+    this.title.anchor.set(0.5);
+    this.addChild(this.title);
 
-    title.position.set(
+    this.resize();
+  };
+
+  public resize(): void {
+    if (!this.title) return;
+
+    this.title.position.set(
       ResizeManager.width / 2,
       ResizeManager.height / 2
     );
-
-    this.addChild(title)
   };
 };
 
