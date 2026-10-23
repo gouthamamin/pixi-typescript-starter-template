@@ -32,6 +32,7 @@ class Button extends Container {
 
     // Click Effect
     background.on("pointerdown", () => {
+      gsap.killTweensOf(this.scale);
       gsap.to(this.scale, {
         x: 0.95,
         y: 0.95,
@@ -40,15 +41,21 @@ class Button extends Container {
     });
 
     background.on("pointerup", () => {
-      gsap.to(this.scale, {
-        x: 1.05,
-        y: 1.05,
-        duration: 0.05,
-      });
+      gsap.killTweensOf(this.scale);
+      gsap.to(this.scale, { x: 1, y: 1, duration: 0.1, ease: "back.out(2)" });
+    });
+
+    background.on("pointerupoutside", () => {
+      gsap.killTweensOf(this.scale);
+      gsap.to(this.scale, { x: 1, y: 1, duration: 0.1 });
     });
 
     if (buttonOptions.onClick) {
-      background.on("pointertap", buttonOptions.onClick)
+      background.on("pointertap", async () => {
+        background.eventMode = "none";
+        await buttonOptions.onClick!();
+        background.eventMode = "static";
+      })
     }
 
     this.addChild(background);
