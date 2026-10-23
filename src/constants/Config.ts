@@ -5,5 +5,4 @@ export const GAME_CONFIG = {
   height: 1080,
   background: "#1099bb",
   antialias: true,
-  resizeTo: window,
 } as const;
